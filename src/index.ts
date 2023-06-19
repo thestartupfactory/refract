@@ -17,7 +17,7 @@ export default (config: Types.Config) => {
   const { schema, output, time } = codegen(config);
 
   return writeFile(output, schema, 'utf8')
-    .then(() => console.log(`Created schema at: ${output} (${time} ms)`));
+    .then(() => console.log(`Created schema at: ${output} (${time} ms) by rups`));
 }
 
 export const generate = (config:Types.Config) => codegen(config).output;

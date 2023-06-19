@@ -24,7 +24,8 @@ type PreviewFeatures =
   | 'dataProxy'
   | 'extendedIndexes'
   | 'fullTextIndex'
-  | 'cockroachdb';
+  | 'cockroachdb'
+  | 'views';
 
 export type Generator = {
   name: string;

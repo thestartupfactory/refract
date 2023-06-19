@@ -9,7 +9,7 @@ export const model = (model: Types.Blocks.Model): string => {
 
   return [
     comments,
-    block(`model ${model.name}`, alignFields(columns.map(column).join('\n'))),
+    block(`${model.asView ? 'view' : 'model' } ${model.name}`, alignFields(columns.map(column).join('\n'))),
   ]
     .filter(nonNullable)
     .join('\n')

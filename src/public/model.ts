@@ -22,6 +22,7 @@ type Model = {
     type: Types.Fields.Field<T>,
     comment?: string,
   ) => Model;
+  AsView: () => Model,
 } & Types.Blocks.Model;
 
 export const Model = (name: string, comment?: string): Model =>
@@ -29,12 +30,13 @@ export const Model = (name: string, comment?: string): Model =>
 
 export class $Model implements Types.Blocks.Model, Model {
   name: string;
+  asView: boolean;
   type: 'model' = 'model';
   columns: Types.Column<Types.Type>[] = [];
 
   constructor(name: string, comment?: string) {
     this.name = name;
-
+    this.asView = false;
     if (comment) {
       this.columns.push({
         name: 'comment',
@@ -104,6 +106,11 @@ export class $Model implements Types.Blocks.Model, Model {
       type.modifiers.push({ type: 'comment', value: comment } as any);
 
     this.columns.push(type as unknown as Types.Column<Types.Type>);
+    return this;
+  }
+
+  AsView() {
+    this.asView = true;
     return this;
   }
 }

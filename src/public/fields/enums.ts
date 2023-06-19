@@ -30,7 +30,7 @@ export const Key = <T extends string>(
 
 class $Enum<K extends Types.Fields.EnumKey[]>
   extends Function
-  implements Types.Blocks.Block<'enum'>
+  implements Types.Blocks.EnumBlock
 {
   type: 'enum' = 'enum' as const;
   columns: Types.Column<'EnumKey' | 'Comment'>[];
